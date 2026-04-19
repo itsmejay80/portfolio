@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jayesh Patel — Portfolio</title>
+<meta name="description" content="Jayesh Patel — full-stack engineer based in Toronto. Selected projects, experience, and contact." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: #fafaf9; transition: background 0.25s ease; }
+  body.dark { background: #0b0b0c; }
+
+  .theme-toggle {
+    position: fixed; top: 14px; right: 20px; z-index: 9998;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: color-mix(in srgb, currentColor 6%, transparent);
+    border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+    color: inherit;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.05em;
+    padding: 7px 12px; border-radius: 999px;
+    cursor: pointer; transition: background 0.15s, color 0.15s, transform 0.15s, border-color 0.15s;
+    backdrop-filter: blur(10px);
+  }
+  .theme-toggle:hover { background: currentColor; }
+  .theme-toggle:hover svg, .theme-toggle:hover .theme-toggle-label { color: var(--bg, #fafaf9); mix-blend-mode: difference; }
+  .theme-toggle svg { display: block; }
+  .theme-toggle-label { text-transform: uppercase; }
+  @media (max-width: 640px) { .theme-toggle-label { display: none; } }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="components/data.jsx"></script>
+<script type="text/babel" src="components/VariantMono.jsx"></script>
+
+<script type="text/babel" data-presets="env,react">
+function App() {
+  const [theme, setTheme] = React.useState(() => {
+    try {
+      const saved = localStorage.getItem('jp_theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+    } catch {}
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+    return 'light';
+  });
+
+  React.useEffect(() => {
+    try { localStorage.setItem('jp_theme', theme); } catch {}
+    document.body.classList.toggle('dark', theme === 'dark');
+  }, [theme]);
+
+  const isDark = theme === 'dark';
+  const toggle = () => setTheme(isDark ? 'light' : 'dark');
+
+  return (
+    <>
+      <window.VariantMono data={window.PORTFOLIO_DATA} density="regular" theme={theme} />
+      <button
+        className="theme-toggle"
+        onClick={toggle}
+        aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+        title={isDark ? 'Light mode' : 'Dark mode'}
+      >
+        {isDark ? (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        ) : (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        )}
+        <span className="theme-toggle-label">{isDark ? 'light' : 'dark'}</span>
+      </button>
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
+</body>
+</html>
