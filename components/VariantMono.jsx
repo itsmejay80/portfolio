@@ -162,66 +162,75 @@ function VariantMono({ data, density, theme }) {
         /* Phone */
         @media (max-width: 640px) {
           .mo-root { font-size: 13px; }
-          .mo-wrap { padding: 0 16px; }
+          .mo-wrap { padding: 0 14px; }
           .mo-nav { border-bottom-style: solid; border-bottom-color: var(--line-soft); }
-          .mo-nav-inner { padding: 10px 16px; padding-right: 56px; font-size: 11px; }
-          .mo-hero { padding: 20px 0 28px; }
-          .mo-hero-card { padding: 18px; grid-template-columns: 44px 1fr; gap: 14px; }
-          .mo-avatar { width: 44px; height: 44px; font-size: 14px; }
-          .mo-hero-name { font-size: 26px; margin-bottom: 6px; }
-          .mo-hero-tag { font-size: 11px; margin-bottom: 12px; }
-          .mo-hero-intro { font-size: 16px; max-width: 100%; }
-          .mo-hero-side {
-            padding-top: 12px;
-            gap: 10px 18px;
-            font-size: 11px;
+          .mo-nav-inner { padding: 10px 14px; padding-right: 56px; font-size: 11px; }
+          .mo-hero { padding: 16px 0 20px; }
+          .mo-hero-card { padding: 16px; grid-template-columns: 42px 1fr; gap: 12px; }
+          .mo-avatar { width: 42px; height: 42px; font-size: 13px; }
+          .mo-hero-name { font-size: 24px; margin-bottom: 4px; }
+          .mo-hero-tag { font-size: 11px; margin-bottom: 10px; }
+          .mo-hero-intro {
+            font-size: 14px;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+            max-width: 100%;
           }
-          .mo-hero-side .dot { width: 5px; height: 5px; }
+          .mo-hero-intro .mo-hl { padding: 1px 4px; }
+          .mo-hero-side {
+            padding-top: 10px;
+            gap: 6px 14px;
+            font-size: 10.5px;
+          }
+          .mo-hero-side .dot { width: 5px; height: 5px; margin-right: 5px; }
           .mo-kv { grid-template-columns: repeat(3, 1fr); }
           .mo-kv > div {
             border-right: 1px solid var(--line) !important;
             border-bottom: none;
-            padding: 10px 12px;
+            padding: 10px 10px;
           }
           .mo-kv > div:last-child { border-right: none !important; }
           .mo-kv .k { font-size: 9px; margin-bottom: 2px; }
           .mo-kv .v { font-size: 13px; }
-          .mo-section { padding: 28px 0; }
+          .mo-section { padding: 22px 0; }
           .mo-section-head {
             flex-direction: row;
             flex-wrap: wrap;
             align-items: baseline;
             gap: 4px 10px;
-            margin-bottom: 18px;
+            margin-bottom: 12px;
           }
           .mo-section-head h2 {
-            font-size: 22px;
+            font-size: 20px;
             flex-basis: 100%;
             order: 2;
+            margin-top: 2px;
           }
-          .mo-section-head .mo-label { padding-top: 0; order: 1; }
+          .mo-section-head .mo-label { padding-top: 0; order: 1; font-size: 10px; }
           .mo-section-head .mo-label:last-child { margin-left: auto; }
-          .mo-about p { font-size: 14px; }
-          .mo-about .lede { font-size: 16px; }
+          .mo-about { gap: 14px; }
+          .mo-about p { font-size: 13.5px; line-height: 1.55; margin: 0 0 10px; }
+          .mo-about .lede { font-size: 14.5px; line-height: 1.45; }
           .mo-proj-list { border-left: none; border-right: none; }
-          .mo-proj { grid-template-columns: 24px 1fr 18px; gap: 10px; padding: 14px 16px; align-items: start; }
+          .mo-proj { grid-template-columns: 24px 1fr 18px; gap: 10px; padding: 12px 14px; align-items: start; }
           .mo-proj-n { padding-top: 2px; font-size: 11px; }
-          .mo-proj-title { font-size: 15px; grid-column: auto; }
-          .mo-proj-title small { font-size: 10px; line-height: 1.45; }
+          .mo-proj-title { font-size: 14.5px; grid-column: auto; }
+          .mo-proj-title small { font-size: 10px; line-height: 1.45; margin-top: 3px; }
           .mo-proj-stack { display: none; }
           .mo-proj-arrow { padding-top: 2px; }
-          .mo-cap-cats { grid-template-columns: 1fr; gap: 10px; }
-          .mo-cap-cat { padding: 14px; }
-          .mo-cap-cat h4 { font-size: 13px; margin-bottom: 10px; padding-bottom: 10px; }
+          .mo-cap-cats { grid-template-columns: 1fr; gap: 8px; }
+          .mo-cap-cat { padding: 12px 14px; }
+          .mo-cap-cat h4 { font-size: 13px; margin-bottom: 8px; padding-bottom: 8px; }
           .mo-cap-cat ul { font-size: 12px; }
+          .mo-cap-cat li { padding: 2px 0; }
           .mo-exp-list { border-left: none; border-right: none; }
-          .mo-exp-item { padding: 16px; gap: 6px; }
+          .mo-exp-item { padding: 14px; gap: 4px; }
           .mo-exp-year { font-size: 11px; }
-          .mo-exp-role { font-size: 15px; }
+          .mo-exp-role { font-size: 14.5px; margin-bottom: 2px; }
           .mo-exp-org { font-size: 11px; }
-          .mo-exp-note { font-size: 13px; line-height: 1.5; }
-          .mo-contact { padding: 32px 0; }
-          .mo-contact h2 { font-size: clamp(30px, 9vw, 40px); margin-bottom: 20px; max-width: 100%; }
+          .mo-exp-note { font-size: 12.5px; line-height: 1.5; margin-top: 4px; }
+          .mo-contact { padding: 28px 0; }
+          .mo-contact h2 { font-size: clamp(26px, 8vw, 36px); margin-bottom: 18px; max-width: 100%; line-height: 1.05; }
           .mo-contact-box { padding: 18px; gap: 4px; }
           .mo-contact-box .row {
             padding: 10px 0;
@@ -241,13 +250,15 @@ function VariantMono({ data, density, theme }) {
 
         /* Very small phones */
         @media (max-width: 380px) {
-          .mo-hero-name { font-size: 22px; }
-          .mo-hero-intro { font-size: 15px; }
-          .mo-hero-card { padding: 14px; grid-template-columns: 40px 1fr; gap: 12px; }
-          .mo-avatar { width: 40px; height: 40px; font-size: 13px; }
+          .mo-hero-name { font-size: 21px; }
+          .mo-hero-intro { font-size: 13.5px; }
+          .mo-hero-card { padding: 12px; grid-template-columns: 38px 1fr; gap: 10px; }
+          .mo-avatar { width: 38px; height: 38px; font-size: 12px; }
           .mo-kv .v { font-size: 12px; }
-          .mo-kv > div { padding: 10px 8px; }
-          .mo-contact h2 { font-size: 26px; }
+          .mo-kv .k { font-size: 8.5px; }
+          .mo-kv > div { padding: 8px 6px; }
+          .mo-section-head h2 { font-size: 18px; }
+          .mo-contact h2 { font-size: 24px; }
           .mo-contact-box .row { flex-direction: column; align-items: flex-start; gap: 2px; }
           .mo-contact-box .row a { max-width: 100%; text-align: left; }
         }
