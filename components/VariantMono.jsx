@@ -33,16 +33,23 @@ function VariantMono({ data, density, theme }) {
           --ink-fg: #0b0b0c;
         }
         .mo-root a { color: inherit; text-decoration: none; }
+        .mo-root img, .mo-root svg { max-width: 100%; }
         .mo-sans { font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
-        .mo-nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px dashed var(--line); }
-        .mo-nav-inner { max-width: 1120px; margin: 0 auto; padding: 16px 32px; display: flex; justify-content: space-between; font-size: 12px; }
+        .mo-nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px dashed var(--line); }
+        .mo-nav-inner { max-width: 1120px; margin: 0 auto; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 12px; }
         .mo-nav-links { display: flex; gap: 24px; }
         .mo-nav-links a { color: var(--fg-dim); }
         .mo-nav-links a:hover { color: var(--fg); text-decoration: underline; text-underline-offset: 3px; }
+        .mo-nav-spacer { width: 90px; flex-shrink: 0; }
         .mo-wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
         .mo-label { font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--fg-faint); padding-top: 4px; }
         .mo-dim { color: var(--fg-dim); }
-        .mo-hl { background: var(--ink); color: var(--ink-fg); padding: 2px 6px; }
+        .mo-hl {
+          background: var(--ink); color: var(--ink-fg);
+          padding: 2px 6px;
+          -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+        }
         .mo-hero { padding: ${pad}px 0 ${pad + 24}px; }
         .mo-hero-card { border: 1px solid var(--fg); background: var(--surface); padding: 32px; display: grid; grid-template-columns: 64px 1fr auto; gap: 24px; align-items: start; }
         .mo-avatar { width: 64px; height: 64px; background: var(--ink); color: var(--ink-fg); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; }
@@ -128,7 +135,8 @@ function VariantMono({ data, density, theme }) {
         /* Tablet portrait */
         @media (max-width: 900px) {
           .mo-nav-links { display: none; }
-          .mo-nav-inner { justify-content: space-between; }
+          .mo-nav-spacer { display: none; }
+          .mo-nav-inner { justify-content: space-between; padding-right: 60px; }
           .mo-hero-card { grid-template-columns: 56px 1fr; padding: 24px; }
           .mo-hero-side {
             grid-column: 1 / -1;
@@ -155,54 +163,93 @@ function VariantMono({ data, density, theme }) {
         @media (max-width: 640px) {
           .mo-root { font-size: 13px; }
           .mo-wrap { padding: 0 16px; }
-          .mo-nav-inner { padding: 12px 16px; font-size: 11px; }
-          .mo-hero { padding: 24px 0 32px; }
-          .mo-hero-card { padding: 20px; grid-template-columns: 48px 1fr; gap: 14px; }
-          .mo-avatar { width: 48px; height: 48px; font-size: 15px; }
-          .mo-hero-name { font-size: 28px; }
-          .mo-hero-tag { font-size: 11px; margin-bottom: 14px; }
-          .mo-hero-intro { font-size: 16px; }
-          .mo-hero-side { gap: 14px; font-size: 11px; }
-          .mo-kv { grid-template-columns: 1fr; }
-          .mo-kv > div { border-right: none !important; border-bottom: 1px solid var(--line); padding: 12px 16px; }
-          .mo-kv > div:last-child { border-bottom: none; }
+          .mo-nav { border-bottom-style: solid; border-bottom-color: var(--line-soft); }
+          .mo-nav-inner { padding: 10px 16px; padding-right: 56px; font-size: 11px; }
+          .mo-hero { padding: 20px 0 28px; }
+          .mo-hero-card { padding: 18px; grid-template-columns: 44px 1fr; gap: 14px; }
+          .mo-avatar { width: 44px; height: 44px; font-size: 14px; }
+          .mo-hero-name { font-size: 26px; margin-bottom: 6px; }
+          .mo-hero-tag { font-size: 11px; margin-bottom: 12px; }
+          .mo-hero-intro { font-size: 16px; max-width: 100%; }
+          .mo-hero-side {
+            padding-top: 12px;
+            gap: 10px 18px;
+            font-size: 11px;
+          }
+          .mo-hero-side .dot { width: 5px; height: 5px; }
+          .mo-kv { grid-template-columns: repeat(3, 1fr); }
+          .mo-kv > div {
+            border-right: 1px solid var(--line) !important;
+            border-bottom: none;
+            padding: 10px 12px;
+          }
+          .mo-kv > div:last-child { border-right: none !important; }
+          .mo-kv .k { font-size: 9px; margin-bottom: 2px; }
+          .mo-kv .v { font-size: 13px; }
           .mo-section { padding: 28px 0; }
           .mo-section-head {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 6px;
-            margin-bottom: 20px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 4px 10px;
+            margin-bottom: 18px;
           }
-          .mo-section-head .mo-label:last-child { display: none; }
-          .mo-section-head h2 { font-size: 22px; }
-          .mo-section-head .mo-label { padding-top: 0; }
+          .mo-section-head h2 {
+            font-size: 22px;
+            flex-basis: 100%;
+            order: 2;
+          }
+          .mo-section-head .mo-label { padding-top: 0; order: 1; }
+          .mo-section-head .mo-label:last-child { margin-left: auto; }
           .mo-about p { font-size: 14px; }
           .mo-about .lede { font-size: 16px; }
-          .mo-proj { grid-template-columns: 28px 1fr 20px; gap: 10px; padding: 14px 16px; align-items: start; }
-          .mo-proj-n { padding-top: 2px; }
+          .mo-proj-list { border-left: none; border-right: none; }
+          .mo-proj { grid-template-columns: 24px 1fr 18px; gap: 10px; padding: 14px 16px; align-items: start; }
+          .mo-proj-n { padding-top: 2px; font-size: 11px; }
           .mo-proj-title { font-size: 15px; grid-column: auto; }
-          .mo-proj-title small { font-size: 10px; }
+          .mo-proj-title small { font-size: 10px; line-height: 1.45; }
           .mo-proj-stack { display: none; }
           .mo-proj-arrow { padding-top: 2px; }
-          .mo-cap-cats { grid-template-columns: 1fr; }
+          .mo-cap-cats { grid-template-columns: 1fr; gap: 10px; }
           .mo-cap-cat { padding: 14px; }
-          .mo-cap-cat h4 { font-size: 13px; }
+          .mo-cap-cat h4 { font-size: 13px; margin-bottom: 10px; padding-bottom: 10px; }
           .mo-cap-cat ul { font-size: 12px; }
-          .mo-exp-item { padding: 14px; }
+          .mo-exp-list { border-left: none; border-right: none; }
+          .mo-exp-item { padding: 16px; gap: 6px; }
+          .mo-exp-year { font-size: 11px; }
           .mo-exp-role { font-size: 15px; }
-          .mo-exp-note { font-size: 12px; }
+          .mo-exp-org { font-size: 11px; }
+          .mo-exp-note { font-size: 13px; line-height: 1.5; }
           .mo-contact { padding: 32px 0; }
-          .mo-contact h2 { font-size: 32px; margin-bottom: 24px; }
+          .mo-contact h2 { font-size: clamp(30px, 9vw, 40px); margin-bottom: 20px; max-width: 100%; }
           .mo-contact-box { padding: 18px; gap: 4px; }
-          .mo-contact-box .row { padding: 10px 0; font-size: 12px; flex-direction: column; gap: 2px; align-items: flex-start; }
+          .mo-contact-box .row {
+            padding: 10px 0;
+            font-size: 12px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+          }
+          .mo-contact-box .row a {
+            text-align: right;
+            word-break: break-word;
+            max-width: 60%;
+          }
           .mo-foot { flex-direction: column; gap: 6px; font-size: 10px; padding: 20px 0; }
         }
 
         /* Very small phones */
         @media (max-width: 380px) {
-          .mo-hero-name { font-size: 24px; }
+          .mo-hero-name { font-size: 22px; }
           .mo-hero-intro { font-size: 15px; }
-          .mo-contact h2 { font-size: 28px; }
+          .mo-hero-card { padding: 14px; grid-template-columns: 40px 1fr; gap: 12px; }
+          .mo-avatar { width: 40px; height: 40px; font-size: 13px; }
+          .mo-kv .v { font-size: 12px; }
+          .mo-kv > div { padding: 10px 8px; }
+          .mo-contact h2 { font-size: 26px; }
+          .mo-contact-box .row { flex-direction: column; align-items: flex-start; gap: 2px; }
+          .mo-contact-box .row a { max-width: 100%; text-align: left; }
         }
       `}</style>
 
@@ -215,7 +262,7 @@ function VariantMono({ data, density, theme }) {
             <a href="#experience">./experience</a>
             <a href="#contact">./contact</a>
           </div>
-          <div style={{width: 90}}></div>
+          <div className="mo-nav-spacer" aria-hidden="true"></div>
         </div>
       </nav>
 
