@@ -20,6 +20,8 @@ function VariantMono({ data, density, theme }) {
           font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
           -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.5;
           transition: background 0.25s ease, color 0.25s ease;
+          width: 100%;
+          overflow-x: clip;
         }
         .mo-root.mo-dark {
           --bg: #0b0b0c;
@@ -33,6 +35,7 @@ function VariantMono({ data, density, theme }) {
           --ink-fg: #0b0b0c;
         }
         .mo-root a { color: inherit; text-decoration: none; }
+        .mo-root * { min-width: 0; }
         .mo-root img, .mo-root svg { max-width: 100%; }
         .mo-sans { font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         .mo-nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px dashed var(--line); }
@@ -50,7 +53,7 @@ function VariantMono({ data, density, theme }) {
           -webkit-box-decoration-break: clone;
           box-decoration-break: clone;
         }
-        .mo-hero { padding: ${pad}px 0 ${pad + 24}px; }
+        .mo-hero { padding-top: ${pad}px; padding-bottom: ${pad + 24}px; }
         .mo-hero-card { border: 1px solid var(--fg); background: var(--surface); padding: 32px; display: grid; grid-template-columns: 64px 1fr auto; gap: 24px; align-items: start; }
         .mo-avatar { width: 64px; height: 64px; background: var(--ink); color: var(--ink-fg); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 500; }
         .mo-hero-name { font-family: 'Inter', sans-serif; font-size: 40px; letter-spacing: -0.03em; font-weight: 500; margin: 0 0 8px; line-height: 1; }
@@ -65,7 +68,7 @@ function VariantMono({ data, density, theme }) {
         .mo-kv > div:last-child { border-right: none; }
         .mo-kv .k { font-size: 11px; color: var(--fg-faint); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 4px; }
         .mo-kv .v { font-family: 'Inter', sans-serif; font-size: 16px; letter-spacing: -0.01em; font-weight: 500; }
-        .mo-section { padding: ${pad}px 0; border-top: 1px dashed var(--line); }
+        .mo-section { padding-top: ${pad}px; padding-bottom: ${pad}px; border-top: 1px dashed var(--line); }
         .mo-section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 40px; }
         .mo-section-head h2 { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 500; letter-spacing: -0.02em; margin: 0; }
         .mo-section-head .mo-label { padding-top: 12px; }
@@ -106,14 +109,14 @@ function VariantMono({ data, density, theme }) {
         .mo-exp-note { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--fg-dim); line-height: 1.5; letter-spacing: -0.01em; }
         .mo-root.mo-dark .mo-exp-note { color: #c8c8c4; }
 
-        .mo-contact { padding: ${pad + 24}px 0; }
+        .mo-contact { padding-top: ${pad + 24}px; padding-bottom: ${pad + 24}px; }
         .mo-contact h2 { font-family: 'Inter', sans-serif; font-size: clamp(40px, 6vw, 72px); font-weight: 500; letter-spacing: -0.03em; line-height: 1; margin: 0 0 40px; max-width: 14ch; }
         .mo-contact-box { border: 1px solid var(--fg); background: var(--ink); color: var(--ink-fg); padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .mo-contact-box .row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed color-mix(in srgb, var(--ink-fg) 30%, transparent); font-size: 13px; }
         .mo-contact-box .row:last-child { border-bottom: none; }
         .mo-contact-box a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-        .mo-foot { border-top: 1px dashed var(--line); padding: 24px 0; font-size: 11px; color: var(--fg-faint); display: flex; justify-content: space-between; letter-spacing: 0.05em; text-transform: uppercase; }
+        .mo-foot { border-top: 1px dashed var(--line); padding-top: 24px; padding-bottom: 24px; font-size: 11px; color: var(--fg-faint); display: flex; justify-content: space-between; letter-spacing: 0.05em; text-transform: uppercase; }
 
         /* ============ Responsive ============ */
         /* Tablet / small laptop */
@@ -121,9 +124,9 @@ function VariantMono({ data, density, theme }) {
           .mo-wrap { padding: 0 24px; }
           .mo-nav-inner { padding: 14px 24px; }
           .mo-nav-links { gap: 18px; }
-          .mo-hero { padding: ${Math.max(pad - 16, 32)}px 0 ${Math.max(pad + 8, 40)}px; }
-          .mo-section { padding: ${Math.max(pad - 16, 32)}px 0; }
-          .mo-contact { padding: ${Math.max(pad + 8, 40)}px 0; }
+          .mo-hero { padding-top: ${Math.max(pad - 16, 32)}px; padding-bottom: ${Math.max(pad + 8, 40)}px; }
+          .mo-section { padding-top: ${Math.max(pad - 16, 32)}px; padding-bottom: ${Math.max(pad - 16, 32)}px; }
+          .mo-contact { padding-top: ${Math.max(pad + 8, 40)}px; padding-bottom: ${Math.max(pad + 8, 40)}px; }
           .mo-hero-name { font-size: 34px; }
           .mo-hero-intro { font-size: 19px; }
           .mo-proj { grid-template-columns: 44px 60px 1fr 200px 28px; padding: 18px 20px; }
@@ -161,106 +164,119 @@ function VariantMono({ data, density, theme }) {
 
         /* Phone */
         @media (max-width: 640px) {
-          .mo-root { font-size: 13px; }
-          .mo-wrap { padding: 0 14px; }
+          .mo-root { font-size: 16px; line-height: 1.55; }
+          .mo-wrap { padding: 0 18px; }
           .mo-nav { border-bottom-style: solid; border-bottom-color: var(--line-soft); }
-          .mo-nav-inner { padding: 10px 14px; padding-right: 56px; font-size: 11px; }
-          .mo-hero { padding: 16px 0 20px; }
-          .mo-hero-card { padding: 16px; grid-template-columns: 42px 1fr; gap: 12px; }
-          .mo-avatar { width: 42px; height: 42px; font-size: 13px; }
-          .mo-hero-name { font-size: 24px; margin-bottom: 4px; }
-          .mo-hero-tag { font-size: 11px; margin-bottom: 10px; }
+          .mo-nav-inner { padding: 12px 18px; padding-right: 58px; font-size: 12px; min-height: 56px; }
+          .mo-hero { padding-top: 18px; padding-bottom: 28px; }
+          .mo-hero-card { padding: 18px; grid-template-columns: 48px 1fr; gap: 14px; }
+          .mo-avatar { width: 48px; height: 48px; font-size: 14px; }
+          .mo-hero-name { font-size: 28px; margin-bottom: 6px; line-height: 1.05; }
+          .mo-hero-tag { font-size: 12px; margin-bottom: 14px; line-height: 1.45; }
           .mo-hero-intro {
-            font-size: 14px;
-            line-height: 1.35;
-            letter-spacing: -0.01em;
+            font-size: 17px;
+            line-height: 1.38;
+            letter-spacing: 0;
             max-width: 100%;
           }
           .mo-hero-intro .mo-hl { padding: 1px 4px; }
           .mo-hero-side {
-            padding-top: 10px;
-            gap: 6px 14px;
-            font-size: 10.5px;
+            padding-top: 12px;
+            gap: 8px 14px;
+            font-size: 12px;
+            line-height: 1.35;
           }
           .mo-hero-side .dot { width: 5px; height: 5px; margin-right: 5px; }
-          .mo-kv { grid-template-columns: repeat(3, 1fr); }
+          .mo-kv { grid-template-columns: 1fr; }
           .mo-kv > div {
-            border-right: 1px solid var(--line) !important;
-            border-bottom: none;
-            padding: 10px 10px;
-          }
-          .mo-kv > div:last-child { border-right: none !important; }
-          .mo-kv .k { font-size: 9px; margin-bottom: 2px; }
-          .mo-kv .v { font-size: 13px; }
-          .mo-section { padding: 22px 0; }
-          .mo-section-head {
-            flex-direction: row;
-            flex-wrap: wrap;
+            border-right: none !important;
+            border-bottom: 1px solid var(--line);
+            padding: 12px 14px;
+            display: flex;
             align-items: baseline;
-            gap: 4px 10px;
-            margin-bottom: 12px;
+            justify-content: space-between;
+            gap: 16px;
+          }
+          .mo-kv > div:last-child { border-bottom: none; }
+          .mo-kv .k { font-size: 10px; margin-bottom: 0; }
+          .mo-kv .v { font-size: 16px; text-align: right; }
+          .mo-section { padding-top: 34px; padding-bottom: 34px; }
+          .mo-section-head {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            gap: 8px 14px;
+            margin-bottom: 18px;
           }
           .mo-section-head h2 {
-            font-size: 20px;
-            flex-basis: 100%;
-            order: 2;
-            margin-top: 2px;
+            font-size: 25px;
+            line-height: 1.08;
+            grid-column: 1 / -1;
+            grid-row: 2;
+            margin-top: 0;
           }
-          .mo-section-head .mo-label { padding-top: 0; order: 1; font-size: 10px; }
-          .mo-section-head .mo-label:last-child { margin-left: auto; }
-          .mo-about { gap: 14px; }
-          .mo-about p { font-size: 13.5px; line-height: 1.55; margin: 0 0 10px; }
-          .mo-about .lede { font-size: 14.5px; line-height: 1.45; }
-          .mo-proj-list { border-left: none; border-right: none; }
-          .mo-proj { grid-template-columns: 24px 1fr 18px; gap: 10px; padding: 12px 14px; align-items: start; }
-          .mo-proj-n { padding-top: 2px; font-size: 11px; }
-          .mo-proj-title { font-size: 14.5px; grid-column: auto; }
-          .mo-proj-title small { font-size: 10px; line-height: 1.45; margin-top: 3px; }
-          .mo-proj-stack { display: none; }
-          .mo-proj-arrow { padding-top: 2px; }
-          .mo-cap-cats { grid-template-columns: 1fr; gap: 8px; }
-          .mo-cap-cat { padding: 12px 14px; }
-          .mo-cap-cat h4 { font-size: 13px; margin-bottom: 8px; padding-bottom: 8px; }
-          .mo-cap-cat ul { font-size: 12px; }
-          .mo-cap-cat li { padding: 2px 0; }
-          .mo-exp-list { border-left: none; border-right: none; }
-          .mo-exp-item { padding: 14px; gap: 4px; }
-          .mo-exp-year { font-size: 11px; }
-          .mo-exp-role { font-size: 14.5px; margin-bottom: 2px; }
-          .mo-exp-org { font-size: 11px; }
-          .mo-exp-note { font-size: 12.5px; line-height: 1.5; margin-top: 4px; }
-          .mo-contact { padding: 28px 0; }
-          .mo-contact h2 { font-size: clamp(26px, 8vw, 36px); margin-bottom: 18px; max-width: 100%; line-height: 1.05; }
-          .mo-contact-box { padding: 18px; gap: 4px; }
+          .mo-section-head .mo-label { padding-top: 0; font-size: 10px; line-height: 1.3; white-space: nowrap; }
+          .mo-about { gap: 4px; }
+          .mo-about p { font-size: 16px; line-height: 1.62; margin: 0 0 16px; letter-spacing: 0; overflow-wrap: anywhere; }
+          .mo-about .lede { font-size: 18px; line-height: 1.45; }
+          .mo-proj-list { border-left: 1px solid var(--fg); border-right: 1px solid var(--fg); }
+          .mo-proj { grid-template-columns: 28px 1fr 22px; gap: 12px; padding: 16px 14px; align-items: start; }
+          .mo-proj-n { padding-top: 3px; font-size: 12px; }
+          .mo-proj-title { font-size: 17px; line-height: 1.25; grid-column: auto; }
+          .mo-proj-title small { font-size: 12px; line-height: 1.5; margin-top: 5px; overflow-wrap: anywhere; }
+          .mo-proj-stack {
+            display: flex;
+            grid-column: 2 / -1;
+            justify-content: flex-start;
+            margin-top: 0;
+          }
+          .mo-proj-stack span { font-size: 10px; padding: 2px 6px; }
+          .mo-proj-arrow { padding-top: 3px; }
+          .mo-cap-cats { grid-template-columns: 1fr; gap: 10px; }
+          .mo-cap-cat { padding: 16px; }
+          .mo-cap-cat h4 { font-size: 16px; margin-bottom: 10px; padding-bottom: 10px; }
+          .mo-cap-cat ul { font-size: 15px; }
+          .mo-cap-cat li { padding: 3px 0; }
+          .mo-exp-list { border-left: 1px solid var(--fg); border-right: 1px solid var(--fg); }
+          .mo-exp-item { padding: 16px; gap: 6px; }
+          .mo-exp-year { font-size: 12px; }
+          .mo-exp-role { font-size: 17px; margin-bottom: 2px; line-height: 1.25; }
+          .mo-exp-org { font-size: 12px; }
+          .mo-exp-note { font-size: 15px; line-height: 1.55; margin-top: 6px; }
+          .mo-contact { padding-top: 36px; padding-bottom: 36px; }
+          .mo-contact h2 { font-size: 34px; margin-bottom: 20px; max-width: 11ch; line-height: 1.05; }
+          .mo-contact-box { padding: 18px; gap: 6px; }
           .mo-contact-box .row {
             padding: 10px 0;
-            font-size: 12px;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
+            font-size: 14px;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 4px;
           }
           .mo-contact-box .row a {
-            text-align: right;
+            text-align: left;
             word-break: break-word;
-            max-width: 60%;
+            max-width: 100%;
           }
-          .mo-foot { flex-direction: column; gap: 6px; font-size: 10px; padding: 20px 0; }
+          .mo-foot { flex-direction: column; gap: 6px; font-size: 11px; padding: 22px 18px; }
         }
 
         /* Very small phones */
         @media (max-width: 380px) {
-          .mo-hero-name { font-size: 21px; }
-          .mo-hero-intro { font-size: 13.5px; }
-          .mo-hero-card { padding: 12px; grid-template-columns: 38px 1fr; gap: 10px; }
-          .mo-avatar { width: 38px; height: 38px; font-size: 12px; }
-          .mo-kv .v { font-size: 12px; }
-          .mo-kv .k { font-size: 8.5px; }
-          .mo-kv > div { padding: 8px 6px; }
-          .mo-section-head h2 { font-size: 18px; }
-          .mo-contact h2 { font-size: 24px; }
-          .mo-contact-box .row { flex-direction: column; align-items: flex-start; gap: 2px; }
-          .mo-contact-box .row a { max-width: 100%; text-align: left; }
+          .mo-wrap { padding: 0 14px; }
+          .mo-nav-inner { padding: 10px 14px; padding-right: 54px; }
+          .mo-hero-card { padding: 14px; grid-template-columns: 44px 1fr; gap: 12px; }
+          .mo-avatar { width: 44px; height: 44px; font-size: 13px; }
+          .mo-hero-name { font-size: 25px; }
+          .mo-hero-intro { font-size: 16px; }
+          .mo-hero-side {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+          }
+          .mo-section-head h2 { font-size: 23px; }
+          .mo-contact h2 { font-size: 30px; }
         }
       `}</style>
 
@@ -283,7 +299,7 @@ function VariantMono({ data, density, theme }) {
           <div className="mo-hero-body">
             <h1 className="mo-hero-name">Jayesh Patel</h1>
             <div className="mo-hero-tag">full-stack engineer · toronto, canada</div>
-            <p className="mo-hero-intro">I design and build <span className="mo-hl">calm digital experiences</span>  reliable interfaces, performant services, thoughtful DX.</p>
+            <p className="mo-hero-intro">I design and build <span className="mo-hl">calm digital experiences</span> — reliable interfaces, performant services, thoughtful DX.</p>
           </div>
           <div className="mo-hero-side">
             <div className="row"><span className="dot"></span>open to work</div>
