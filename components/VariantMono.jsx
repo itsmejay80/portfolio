@@ -109,6 +109,20 @@ function VariantMono({ data, density, theme }) {
         .mo-exp-note { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--fg-dim); line-height: 1.5; letter-spacing: -0.01em; }
         .mo-root.mo-dark .mo-exp-note { color: #c8c8c4; }
 
+        .mo-oss-list { border: 1px solid var(--fg); background: var(--surface); }
+        .mo-oss-item { display: grid; grid-template-columns: 140px 1fr 40px; gap: 24px; padding: 24px; border-bottom: 1px dashed var(--line); transition: background 0.15s, color 0.15s; cursor: pointer; align-items: start; }
+        .mo-oss-item:last-child { border-bottom: none; }
+        .mo-oss-item:hover { background: var(--ink); color: var(--ink-fg); }
+        .mo-oss-proj { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 4px; }
+        .mo-oss-stars { font-size: 12px; color: var(--fg-dim); }
+        .mo-oss-item:hover .mo-oss-stars { color: var(--ink-fg); opacity: 0.7; }
+        .mo-oss-title { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 4px; }
+        .mo-oss-desc { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--fg-dim); line-height: 1.5; letter-spacing: -0.01em; }
+        .mo-root.mo-dark .mo-oss-desc { color: #c8c8c4; }
+        .mo-oss-item:hover .mo-oss-desc { color: var(--ink-fg); opacity: 0.85; }
+        .mo-oss-arrow { text-align: right; opacity: 0.4; align-self: center; }
+        .mo-oss-item:hover .mo-oss-arrow { opacity: 1; }
+
         .mo-contact { padding-top: ${pad + 24}px; padding-bottom: ${pad + 24}px; }
         .mo-contact h2 { font-family: 'Inter', sans-serif; font-size: clamp(40px, 6vw, 72px); font-weight: 500; letter-spacing: -0.03em; line-height: 1; margin: 0 0 40px; max-width: 14ch; }
         .mo-contact-box { border: 1px solid var(--fg); background: var(--ink); color: var(--ink-fg); padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -132,6 +146,7 @@ function VariantMono({ data, density, theme }) {
           .mo-proj { grid-template-columns: 44px 60px 1fr 200px 28px; padding: 18px 20px; }
           .mo-cap-cats { grid-template-columns: repeat(2, 1fr); }
           .mo-exp-item { grid-template-columns: 120px 1fr 1fr; padding: 20px; }
+          .mo-oss-item { grid-template-columns: 120px 1fr 28px; padding: 20px; }
           .mo-contact h2 { font-size: clamp(36px, 6vw, 60px); }
         }
 
@@ -159,6 +174,10 @@ function VariantMono({ data, density, theme }) {
           .mo-proj-title { font-size: 17px; grid-column: 2 / 4; }
           .mo-cap-cats { grid-template-columns: 1fr 1fr; gap: 16px; }
           .mo-exp-item { grid-template-columns: 1fr; gap: 10px; padding: 18px; }
+          .mo-oss-item { grid-template-columns: 1fr 28px; gap: 12px; padding: 18px; }
+          .mo-oss-proj { grid-column: 1 / -1; margin-bottom: 2px; }
+          .mo-oss-title { grid-column: 1 / -1; }
+          .mo-oss-desc { grid-column: 1 / -1; margin-top: 4px; }
           .mo-contact-box { grid-template-columns: 1fr; padding: 24px; }
         }
 
@@ -243,6 +262,12 @@ function VariantMono({ data, density, theme }) {
           .mo-exp-role { font-size: 17px; margin-bottom: 2px; line-height: 1.25; }
           .mo-exp-org { font-size: 12px; }
           .mo-exp-note { font-size: 15px; line-height: 1.55; margin-top: 6px; }
+          .mo-oss-list { border-left: 1px solid var(--fg); border-right: 1px solid var(--fg); }
+          .mo-oss-item { grid-template-columns: 1fr 22px; gap: 12px; padding: 16px 14px; }
+          .mo-oss-proj { font-size: 16px; margin-bottom: 2px; }
+          .mo-oss-stars { font-size: 11px; }
+          .mo-oss-title { font-size: 15px; margin-bottom: 2px; }
+          .mo-oss-desc { font-size: 14px; line-height: 1.55; margin-top: 4px; }
           .mo-contact { padding-top: 36px; padding-bottom: 36px; }
           .mo-contact h2 { font-size: 34px; margin-bottom: 20px; max-width: 11ch; line-height: 1.05; }
           .mo-contact-box { padding: 18px; gap: 6px; }
@@ -287,6 +312,7 @@ function VariantMono({ data, density, theme }) {
             <a href="#work">./work</a>
             <a href="#about">./about</a>
             <a href="#experience">./experience</a>
+            <a href="#opensource">./opensource</a>
             <a href="#contact">./contact</a>
           </div>
           <div className="mo-nav-spacer" aria-hidden="true"></div>
@@ -391,6 +417,29 @@ function VariantMono({ data, density, theme }) {
               </div>
               <div className="mo-exp-note">{e.note}</div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mo-wrap mo-section" id="opensource">
+        <div className="mo-section-head">
+          <span className="mo-label">// 05 · open source</span>
+          <h2>Community contributions.</h2>
+          <span className="mo-label">merged: {String(d.opensource.length).padStart(2, '0')}</span>
+        </div>
+        <div className="mo-oss-list">
+          {d.opensource.map((o, i) => (
+            <a href={o.href} target="_blank" rel="noopener" className="mo-oss-item" key={i}>
+              <div>
+                <div className="mo-oss-proj">{o.project}</div>
+                <div className="mo-oss-stars">★ {o.stars}</div>
+              </div>
+              <div>
+                <div className="mo-oss-title">{o.title}</div>
+                <div className="mo-oss-desc">{o.description}</div>
+              </div>
+              <div className="mo-oss-arrow">→</div>
+            </a>
           ))}
         </div>
       </section>

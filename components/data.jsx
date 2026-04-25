@@ -91,6 +91,29 @@ const PORTFOLIO_DATA = {
       note: "Built MERN products and grew into full-stack ownership across multiple clients.",
     },
   ],
+  opensource: [
+    {
+      project: "JupyterLab",
+      stars: "15.1k",
+      title: "Add toggle command for output scrolling",
+      description: "Introduced a togglable command with checked-state support for notebook output scrolling, replacing separate enable/disable context-menu entries. Extended Galata test coverage.",
+      href: "https://github.com/jupyterlab/jupyterlab/pull/18754",
+    },
+    {
+      project: "JupyterLab",
+      stars: "15.1k",
+      title: "Fix Contextual Help keyboard shortcut reliability",
+      description: "Fixed Accel+I toggle reliability by switching to inspector:toggle and cleaning up stale dataset attributes when the panel is closed via UI.",
+      href: "https://github.com/jupyterlab/jupyterlab/pull/18747",
+    },
+    {
+      project: "Strapi",
+      stars: "72k",
+      title: "Render ID column without number grouping",
+      description: "Fixed locale-based thousands separators in the Content Manager list view by disabling numeric grouping for ID columns.",
+      href: "https://github.com/strapi/strapi/pull/25996",
+    },
+  ],
 };
 
 window.PORTFOLIO_DATA = PORTFOLIO_DATA;
