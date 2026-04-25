@@ -31,6 +31,14 @@ const PORTFOLIO_DATA = {
     },
     {
       n: "02",
+      year: "2026",
+      title: "Nook — Spatial Workboard",
+      blurb: "Local-first desktop app. Cards on an auto-tiling canvas — notes, todos, websites, documents, calendar. No cloud. Electron + React 19 + Vite.",
+      stack: ["TypeScript", "Electron", "React 19", "Vite", "Tailwind v4", "Zustand", "better-sqlite3"],
+      href: "https://github.com/itsmejay80/nook",
+    },
+    {
+      n: "03",
       year: "2024",
       title: "Encrypted Chat Application",
       blurb: "Web chat with end-to-end encryption, real-time sockets, and a minimal interface.",
@@ -38,7 +46,7 @@ const PORTFOLIO_DATA = {
       href: "https://github.com/itsmejay80/ChatApplication",
     },
     {
-      n: "03",
+      n: "04",
       year: "2024",
       title: "Payment & Inventory Microservice",
       blurb: "Event-driven microservices using Redis Streams, FastAPI, and a React admin surface.",
@@ -46,7 +54,7 @@ const PORTFOLIO_DATA = {
       href: "https://github.com/itsmejay80/microserverice",
     },
     {
-      n: "04",
+      n: "05",
       year: "2023",
       title: "Prompt Share",
       blurb: "A community prompt-sharing platform built on Next.js 13 with server components.",
@@ -54,7 +62,7 @@ const PORTFOLIO_DATA = {
       href: "https://github.com/itsmejay80/prompt-share",
     },
     {
-      n: "05",
+      n: "06",
       year: "2023",
       title: "Twitter Clone (T3)",
       blurb: "Type-safe social feed with tRPC, Prisma, and edge-ready infrastructure.",
