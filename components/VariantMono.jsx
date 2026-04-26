@@ -175,6 +175,7 @@ function VariantMono({ data, density, theme }) {
           .mo-cap-cats { grid-template-columns: 1fr 1fr; gap: 16px; }
           .mo-exp-item { grid-template-columns: 1fr; gap: 10px; padding: 18px; }
           .mo-oss-item { grid-template-columns: 1fr 28px; gap: 12px; padding: 18px; }
+          .mo-oss-item > div:not(.mo-oss-arrow) { display: contents; }
           .mo-oss-proj { grid-column: 1 / -1; margin-bottom: 2px; }
           .mo-oss-title { grid-column: 1 / -1; }
           .mo-oss-desc { grid-column: 1 / -1; margin-top: 4px; }
