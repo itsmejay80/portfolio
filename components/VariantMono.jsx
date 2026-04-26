@@ -269,6 +269,7 @@ function VariantMono({ data, density, theme }) {
           .mo-oss-stars { font-size: 11px; }
           .mo-oss-title { font-size: 15px; margin-bottom: 2px; }
           .mo-oss-desc { font-size: 14px; line-height: 1.55; margin-top: 4px; }
+          .mo-oss-arrow { grid-column: 1 / -1; text-align: left; padding-top: 4px; }
           .mo-contact { padding-top: 36px; padding-bottom: 36px; }
           .mo-contact h2 { font-size: 34px; margin-bottom: 20px; max-width: 11ch; line-height: 1.05; }
           .mo-contact-box { padding: 18px; gap: 6px; }
