@@ -121,6 +121,20 @@ const PORTFOLIO_DATA = {
       description: "Fixed locale-based thousands separators in the Content Manager list view by disabling numeric grouping for ID columns.",
       href: "https://github.com/strapi/strapi/pull/25996",
     },
+    {
+      project: "Saleor",
+      stars: "22.9k",
+      title: "Add checkoutDelete mutation",
+      description: "Added a staff/app-only GraphQL mutation for deleting checkouts, guarded by MANAGE_CHECKOUTS. Returns a dedicated errors list with full test coverage for staff/app access, permission denial, and missing checkout cases.",
+      href: "https://github.com/saleor/saleor/pull/19126",
+    },
+    {
+      project: "Caveman",
+      stars: "47.6k",
+      title: "Consolidate AI agent install details",
+      description: "Replaced four near-identical README sections (Cursor, Windsurf, Cline, Copilot) with a single consolidated block and summary table, preserving all install commands, rule file paths, and agent-specific notes.",
+      href: "https://github.com/JuliusBrussee/caveman/pull/106",
+    },
   ],
 };
 
